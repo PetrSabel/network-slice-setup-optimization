@@ -1,0 +1,22 @@
+FROM python:3.9
+
+RUN pip3 install pyroute2
+RUN apt-get -qy update && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+	bash \
+	bash-completion \
+	curl \
+	iperf \
+	iperf3 \
+	iproute2 \
+	iputils-ping \
+	net-tools \
+	stress-ng \
+	tcpdump \
+	telnet && \
+	rm -rf /var/lib/apt/lists/*
+
+COPY ./client.py /home/client.py
+COPY ./server.py /home/server.py
+
+CMD python /home/client.py
