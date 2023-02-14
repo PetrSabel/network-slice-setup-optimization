@@ -251,6 +251,7 @@ class Slicing(app_manager.RyuApp):
                                     in_port=10, actions=actions,
                                     data=p)
             datapath.send_msg(msg)
+            # Leave some time to the active server to send the state
             time.sleep(2)
         
         # Change server, recalculate slicing

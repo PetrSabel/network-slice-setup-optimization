@@ -14,8 +14,7 @@ class Monitor(Slicing):
 
     def _monitor(self):
         while True:
-            hub.sleep(30)
-            
+            hub.sleep(10)
             try:
                 self.logger.info("{}".format(self.servers))
                 for new_server in self.servers:
@@ -29,7 +28,7 @@ class Monitor(Slicing):
                         switches.append(sw)
 
                     # Setting def values for server bandwidth
-                    self.bw.setdefault(self.curr_server, [0,0,0].copy())
+                    self.bw[self.curr_server] = [0, 0, 0].copy()
                     hub.sleep(10)
                     
                     for i in switches:
@@ -60,7 +59,7 @@ class Monitor(Slicing):
                 self.logger.info("\nServer has been migrated on <{}>".format(new_server))
 
                 # Service time
-                hub.sleep(60)
+                hub.sleep(50)
             except Exception as e:
                 print("Cannot migrate for some reason")
                 print(e)

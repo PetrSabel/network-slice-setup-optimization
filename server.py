@@ -122,7 +122,7 @@ def internal(namespace):    # aspetta richiesta di migrazione
     print("Waiting migration request in namespace <{}>".format(namespace))
     netns.setns(namespace)
     internal_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    internal_sock.bind((INTERNAL_IP, MIGRATE_PORT)) #TODO: change internal port to migrate port
+    internal_sock.bind((INTERNAL_IP, MIGRATE_PORT)) 
     internal_sock.settimeout(0.5)
 
     while not STOP_EVENT.is_set():

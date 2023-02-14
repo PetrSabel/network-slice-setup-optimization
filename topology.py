@@ -8,41 +8,43 @@ if answer == "2":
         nhost = input("Insert number of hosts (between 2 and 9): ")
         try:
             nhost = int(nhost)
-            break
+            if nhost < 2:
+                print("Number must be higher than 1")
+            elif nhost > 9:
+                print("Number is too big")
+            else:
+                break
         except:
             print("Insered value is not a number")
-        
-        if nhost < 2:
-            print("Number must be higher than 1")
-        elif nhost > 9:
-            print("Number is too big")
 
     while True:
         nswitch = input("Insert number of switches (between 2 and 9): ")
         try:
             nswitch = int(nswitch)
-            break
+            if nswitch < 2:
+                print("Number must be higher than 1")
+            elif nswitch > 9:
+                print("Number is too big")
+            else: 
+                break
         except:
             print("Insered value is not a number")
-        
-        if nswitch < 2:
-            print("Number must be higher than 1")
-        elif nswitch > 9:
-            print("Number is too big")
+
 
     while True:
         nservers = input("Insert number of servers (between 2 and 9): ")
         try:
             nservers = int(nservers)
-            break
+            if nservers < 2:
+                print("Number must be at least 2 (to permit migration)")
+            elif nservers > 9:
+                print("Number is too big")
+            else: 
+                break
         except:
             print("Inserted value is not a number")
         
-        if nservers < 2:
-            print("Number must be at least 2 (to permit migration)")
-        elif nservers > 9:
-            print("Number is too big")
-
+            
 
     print("Servers: {}\nHosts: {}\nSwitches: {}".format(nservers, nhost, nswitch))
     
